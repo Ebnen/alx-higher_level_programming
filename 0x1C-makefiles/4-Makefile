@@ -1,0 +1,22 @@
+# creating a make file with lot of variables
+
+CC = gcc
+SRC = main.c school.c
+OBJ = ${SRC:%.c=%.o}
+NAME = school
+RM = rm -f
+CFLAG = -Wall -Werror -Wextra -pedantic
+
+
+all: ${OBJ}
+        ${CC} ${CFLAG} ${OBJ} -o ${NAME}
+
+clean:
+    ${RM} *~ ${NAME}
+
+oclean:
+    ${RM} ${OBJ}
+
+fclean: clean oclean
+
+rm: fclean all
